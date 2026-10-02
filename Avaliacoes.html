@@ -170,128 +170,237 @@
 </a>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-    getFirestore,
-    collection,
-    addDoc,
-    query,
-    where,
-    onSnapshot,
-    serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    // Firebase App
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-const firebaseConfig = {
-    apiKey: "COLE_AQUI",
-    authDomain: "COLE_AQUI",
-    projectId: "COLE_AQUI",
-    storageBucket: "COLE_AQUI",
-    messagingSenderId: "COLE_AQUI",
-    appId: "COLE_AQUI"
-};
+    // Firebase Firestore
+    import {
+        getFirestore,
+        collection,
+        addDoc,
+        query,
+        where,
+        onSnapshot,
+        serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const formulario = document.getElementById("formAvaliacao");
-const lista = document.getElementById("listaAvaliacoes");
-const mensagem = document.getElementById("mensagem");
-const botao = formulario.querySelector('button[type="submit"]');
-const firebaseConfigurado = Object.values(firebaseConfig).every(
-    (valor) => valor.trim() && !valor.includes("COLE_AQUI")
-);
-let temporizadorMensagem;
+    // Configuração do Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyACXDXRmQQFBpxB9K9wWViFT3YyONsHysg",
+        authDomain: "ar-plus-solucoes-342412.firebaseapp.com",
+        projectId: "ar-plus-solucoes-342412",
+        storageBucket: "ar-plus-solucoes-342412.firebasestorage.app",
+        messagingSenderId: "447489724537",
+        appId: "1:447489724537:web:f8577d610dff504833c4a8",
+        measurementId: "G-KTSDM43JXV"
+    };
 
-function mostrarMensagem(texto, erro = false) {
-    mensagem.textContent = texto;
-    mensagem.style.display = "block";
-    mensagem.style.color = erro ? "#c0392b" : "";
-    clearTimeout(temporizadorMensagem);
-    temporizadorMensagem = setTimeout(() => {
-        mensagem.style.display = "none";
-    }, 5000);
-}
-
-function mostrarAvisoLista(texto) {
-    const aviso = document.createElement("p");
-    aviso.textContent = texto;
-    lista.replaceChildren(aviso);
-}
-
-if (!firebaseConfigurado) {
-    mostrarAvisoLista("As avaliações compartilhadas serão ativadas após configurar o Firebase.");
-    formulario.addEventListener("submit", (evento) => {
-        evento.preventDefault();
-        mostrarMensagem("O Firebase ainda precisa ser configurado para enviar avaliações.", true);
-    });
-} else {
+    // Inicializa o Firebase
     const app = initializeApp(firebaseConfig);
+
+    // Inicializa o Firestore
     const db = getFirestore(app);
+
+    // Elementos do formulário
+    const formulario = document.getElementById("formAvaliacao");
+    const lista = document.getElementById("listaAvaliacoes");
+    const mensagem = document.getElementById("mensagem");
+    const botao = formulario.querySelector('button[type="submit"]');
+
+    // Coleção de avaliações
     const colecao = collection(db, "avaliacoes");
-    const consulta = query(colecao, where("aprovada", "==", true));
 
-    onSnapshot(consulta, (snapshot) => {
-        const itens = snapshot.docs
-            .map((documento) => documento.data())
-            .sort((a, b) => (b.criadoEm?.seconds || 0) - (a.criadoEm?.seconds || 0));
+    // Busca somente avaliações aprovadas
+    const consulta = query(
+        colecao,
+        where("aprovada", "==", true)
+    );
 
-        lista.replaceChildren();
+    // Mostra mensagens para o usuário
+    let temporizadorMensagem;
 
-        if (itens.length === 0) {
-            mostrarAvisoLista("Ainda não existem avaliações. Seja o primeiro a avaliar!");
-            return;
-        }
+    function mostrarMensagem(texto, erro = false) {
+        mensagem.textContent = texto;
+        mensagem.style.display = "block";
+        mensagem.style.color = erro ? "#c0392b" : "";
 
-        itens.forEach((avaliacao) => {
-            const nota = Math.min(5, Math.max(1, Number(avaliacao.nota) || 5));
-            const artigo = document.createElement("article");
-            artigo.className = "card aval";
+        clearTimeout(temporizadorMensagem);
 
-            const estrelas = document.createElement("div");
-            estrelas.className = "nota";
-            estrelas.setAttribute("aria-label", `${nota} estrelas`);
-            estrelas.textContent = "★".repeat(nota) + "☆".repeat(5 - nota);
+        temporizadorMensagem = setTimeout(() => {
+            mensagem.style.display = "none";
+        }, 5000);
+    }
 
-            const texto = document.createElement("p");
-            texto.textContent = `“${avaliacao.texto || ""}”`;
+    // Mostra aviso na lista
+    function mostrarAvisoLista(texto) {
+        const aviso = document.createElement("p");
+        aviso.textContent = texto;
+        lista.replaceChildren(aviso);
+    }
 
-            const rodape = document.createElement("footer");
-            rodape.textContent = avaliacao.nome || "Cliente";
+    // Carrega as avaliações aprovadas
+    onSnapshot(
+        consulta,
+        (snapshot) => {
 
-            artigo.append(estrelas, texto, rodape);
-            lista.appendChild(artigo);
-        });
-    }, () => {
-        mostrarAvisoLista("Não foi possível carregar as avaliações agora.");
-    });
+            const itens = snapshot.docs
+                .map((documento) => documento.data())
+                .sort(
+                    (a, b) =>
+                        (b.criadoEm?.seconds || 0) -
+                        (a.criadoEm?.seconds || 0)
+                );
 
-    formulario.addEventListener("submit", async (evento) => {
-        evento.preventDefault();
+            lista.replaceChildren();
 
-        const nome = document.getElementById("nome").value.trim().slice(0, 60);
-        const nota = Number(document.getElementById("nota").value);
-        const texto = document.getElementById("avaliacao").value.trim().slice(0, 600);
+            if (itens.length === 0) {
+                mostrarAvisoLista(
+                    "Ainda não existem avaliações. Seja o primeiro a avaliar!"
+                );
+                return;
+            }
 
-        if (!nome || !Number.isInteger(nota) || nota < 1 || nota > 5 || !texto) {
-            mostrarMensagem("Preencha o nome, a nota e a avaliação corretamente.", true);
-            return;
-        }
+            // Cria cada avaliação
+            itens.forEach((avaliacao) => {
 
-        botao.disabled = true;
-        try {
-            await addDoc(colecao, {
-                nome,
-                nota,
-                texto,
-                aprovada: false,
-                criadoEm: serverTimestamp()
+                const nota = Math.min(
+                    5,
+                    Math.max(
+                        1,
+                        Number(avaliacao.nota) || 5
+                    )
+                );
+
+                const artigo = document.createElement("article");
+                artigo.className = "card aval";
+
+                const estrelas = document.createElement("div");
+                estrelas.className = "nota";
+
+                estrelas.setAttribute(
+                    "aria-label",
+                    `${nota} estrelas`
+                );
+
+                estrelas.textContent =
+                    "★".repeat(nota) +
+                    "☆".repeat(5 - nota);
+
+                const texto = document.createElement("p");
+
+                texto.textContent =
+                    `“${avaliacao.texto || ""}”`;
+
+                const rodape = document.createElement("footer");
+
+                rodape.textContent =
+                    avaliacao.nome || "Cliente";
+
+                artigo.append(
+                    estrelas,
+                    texto,
+                    rodape
+                );
+
+                lista.appendChild(artigo);
             });
-            formulario.reset();
-            mostrarMensagem("Avaliação enviada! Ela aparece no site assim que for aprovada. ⭐");
-        } catch {
-            mostrarMensagem("Não foi possível enviar. Tente novamente.", true);
-        } finally {
-            botao.disabled = false;
+        },
+
+        () => {
+            mostrarAvisoLista(
+                "Não foi possível carregar as avaliações agora."
+            );
         }
-    });
-}
+    );
+
+    // Envio do formulário
+    formulario.addEventListener(
+        "submit",
+        async (evento) => {
+
+            evento.preventDefault();
+
+            const nome =
+                document
+                    .getElementById("nome")
+                    .value
+                    .trim()
+                    .slice(0, 60);
+
+            const nota =
+                Number(
+                    document.getElementById("nota").value
+                );
+
+            const texto =
+                document
+                    .getElementById("avaliacao")
+                    .value
+                    .trim()
+                    .slice(0, 600);
+
+            // Validação
+            if (
+                !nome ||
+                !Number.isInteger(nota) ||
+                nota < 1 ||
+                nota > 5 ||
+                !texto
+            ) {
+                mostrarMensagem(
+                    "Preencha o nome, a nota e a avaliação corretamente.",
+                    true
+                );
+
+                return;
+            }
+
+            botao.disabled = true;
+
+            try {
+
+                // Salva avaliação no Firestore
+                await addDoc(colecao, {
+
+                    nome: nome,
+
+                    nota: nota,
+
+                    texto: texto,
+
+                    // A avaliação começa como não aprovada
+                    aprovada: false,
+
+                    criadoEm: serverTimestamp()
+
+                });
+
+                // Limpa o formulário
+                formulario.reset();
+
+                mostrarMensagem(
+                    "Avaliação enviada! Ela aparece no site assim que for aprovada. ⭐"
+                );
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao enviar avaliação:",
+                    erro
+                );
+
+                mostrarMensagem(
+                    "Não foi possível enviar. Tente novamente.",
+                    true
+                );
+
+            } finally {
+
+                botao.disabled = false;
+
+            }
+        }
+    );
 </script>
 </body>
 </html>
