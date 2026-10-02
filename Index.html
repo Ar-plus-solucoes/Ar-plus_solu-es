@@ -19,7 +19,12 @@
     </a>
     <input type="checkbox" id="abre" aria-label="Abrir menu">
     <label class="burger" for="abre" aria-hidden="true">☰</label>
-    <ul class="menu"><li><a href="index.html" aria-current="page">Início</a></li><li><a href="trabalhos.html">Trabalhos</a></li><li><a href="avaliacoes.html">Avaliações</a></li><li><a href="contato.html">Contato</a></li></ul>
+    <ul class="menu">
+      <li><a href="index.html" aria-current="page">Início</a></li>
+      <li><a href="trabalhos.html">Trabalhos</a></li>
+      <li><a href="avaliacoes.html">Avaliações</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
   </div>
 </header>
 <main>
@@ -34,33 +39,7 @@
         <a class="btn btn-borda" href="trabalhos.html">Ver trabalhos</a>
       </div>
     </div>
-    <svg class="hero-visual" viewBox="0 0 900 640" role="img" aria-label="Fachada azul da loja Ar Plus em Cosmópolis" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stop-color="#edf8ff"/>
-          <stop offset="100%" stop-color="#d7edf8"/>
-        </linearGradient>
-        <linearGradient id="glass" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stop-color="#1a1f5c"/>
-          <stop offset="100%" stop-color="#2a3f7d"/>
-        </linearGradient>
-        <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stop-color="#27a7e2"/>
-          <stop offset="100%" stop-color="#1dbf74"/>
-        </linearGradient>
-      </defs>
-      <rect width="900" height="640" fill="url(#sky)"/>
-      <rect x="70" y="110" width="760" height="420" rx="26" fill="url(#glass)"/>
-      <rect x="120" y="165" width="660" height="270" rx="18" fill="#f4fbff" opacity="0.95"/>
-      <rect x="160" y="210" width="180" height="170" rx="14" fill="#e5f7ff"/>
-      <rect x="380" y="210" width="180" height="170" rx="14" fill="#e5f7ff"/>
-      <rect x="600" y="210" width="180" height="170" rx="14" fill="#e5f7ff"/>
-      <rect x="185" y="235" width="130" height="120" rx="12" fill="url(#accent)" opacity="0.9"/>
-      <rect x="405" y="235" width="130" height="120" rx="12" fill="#1dbf74" opacity="0.9"/>
-      <rect x="625" y="235" width="130" height="120" rx="12" fill="#27a7e2" opacity="0.9"/>
-      <text x="450" y="490" text-anchor="middle" font-size="46" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">AR PLUS</text>
-      <text x="450" y="530" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" fill="#dff5ff">Soluções em Ar Condicionado</text>
-    </svg>
+    <img class="hero-visual" src="img/ilustracoes/hero-loja.svg" alt="Fachada azul da loja Ar Plus em Cosmópolis">
   </div>
 </section>
 
@@ -79,29 +58,7 @@
 
 <section class="secao gelo">
   <div class="wrap dois">
-    <svg class="loja-visual" viewBox="0 0 900 640" role="img" aria-label="Interior da loja com aparelhos de ar condicionado em exposição" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="bgLoja" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stop-color="#edf8ff"/>
-          <stop offset="100%" stop-color="#dfeefc"/>
-        </linearGradient>
-        <linearGradient id="blueLoja" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stop-color="#1a1f5c"/>
-          <stop offset="100%" stop-color="#2a3f7d"/>
-        </linearGradient>
-      </defs>
-      <rect width="900" height="640" fill="url(#bgLoja)"/>
-      <rect x="80" y="80" width="740" height="480" rx="28" fill="#ffffff" opacity="0.7"/>
-      <rect x="120" y="146" width="660" height="230" rx="18" fill="url(#blueLoja)"/>
-      <rect x="170" y="205" width="150" height="120" rx="12" fill="#eaf8ff"/>
-      <rect x="375" y="205" width="150" height="120" rx="12" fill="#eaf8ff"/>
-      <rect x="580" y="205" width="150" height="120" rx="12" fill="#eaf8ff"/>
-      <rect x="210" y="260" width="70" height="55" rx="10" fill="#27a7e2"/>
-      <rect x="415" y="260" width="70" height="55" rx="10" fill="#1dbf74"/>
-      <rect x="620" y="260" width="70" height="55" rx="10" fill="#27a7e2"/>
-      <rect x="175" y="395" width="560" height="95" rx="16" fill="#dfeefc"/>
-      <text x="450" y="448" text-anchor="middle" font-size="38" font-family="Arial, sans-serif" font-weight="700" fill="#1a1f5c">Loja em exposição</text>
-    </svg>
+    <img class="loja-visual" src="img/ilustracoes/loja-exposicao.svg" alt="Interior da loja com aparelhos de ar condicionado em exposição">
     <div>
       <h2>Venha conhecer a loja</h2>
       <p>Temos aparelhos em exposição para você ver de perto antes de decidir. Trabalhamos com marcas como:</p>
@@ -136,13 +93,14 @@
       <h4>Navegação</h4>
       <ul>
         <li><a href="index.html">Início</a></li>
-        <li><a href="Trabalhos.html">Trabalhos</a></li>
+        <li><a href="Trabalhos.html" aria-current="page">Trabalhos</a></li>
         <li><a href="Avaliacoes.html">Avaliações</a></li>
+        <li><a href="Contato.html">Contato</a></li>
       </ul>
     </div>
     <div>
       <h4>Contato rápido</h4>
-      <p>📞 (19) 3204-8000</p>
+      <p>� (19) 99187-4740</p>
       <p>✉️ arplus@email.com.br</p>
       <p>📍 Rua José Zacarias, 100 — Cidade Alta, Cosmópolis/SP</p>
     </div>
