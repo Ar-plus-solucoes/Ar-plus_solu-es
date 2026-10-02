@@ -908,6 +908,10 @@ textarea {
     gap: 1.5rem;
   }
 
+  .rodape {
+    padding-bottom: 6rem;
+  }
+
   .clientes-lista li {
     grid-template-columns: 1fr;
   }
