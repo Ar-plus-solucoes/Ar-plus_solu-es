@@ -788,6 +788,10 @@ textarea {
   align-items: start;
 }
 
+.rodape-conteudo > div {
+  min-width: 0;
+}
+
 .rodape h4 {
   color: #fff;
   font-size: 1.05rem;
@@ -805,6 +809,7 @@ textarea {
 .rodape p {
   margin-bottom: 0.6rem;
   line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 .rodape ul {
@@ -896,6 +901,11 @@ textarea {
   .dois,
   .contato {
     grid-template-columns: 1fr;
+  }
+
+  .rodape-conteudo {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .clientes-lista li {
