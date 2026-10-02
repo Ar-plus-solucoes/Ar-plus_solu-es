@@ -8,12 +8,30 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style/ar_plus.css">
 </head>
 <body>
 <header class="topo">
   <div class="wrap">
-    <a class="marca" href="index.html"><img src="img/logo.svg" alt="Logo Ar Plus"><span>Ar Plus Soluções<br>em Ar Condicionado</span></a>
+    <a class="marca" href="index.html" aria-label="Logo Ar Plus Soluções em Ar Condicionado">
+      <svg viewBox="0 0 220 220" role="img" aria-label="Logo Ar Plus" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bgLogo3" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stop-color="#1a1f5c"/>
+            <stop offset="100%" stop-color="#2a3f7d"/>
+          </linearGradient>
+          <linearGradient id="accentLogo3" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stop-color="#27a7e2"/>
+            <stop offset="100%" stop-color="#1dbf74"/>
+          </linearGradient>
+        </defs>
+        <rect width="220" height="220" rx="110" fill="url(#bgLogo3)"/>
+        <path d="M47 120c0-27 22-49 49-49 17 0 30 7 39 19 8-10 21-17 35-17 27 0 50 23 50 50v5c0 28-22 51-49 51H96c-27 0-49-23-49-51v-8Z" fill="url(#accentLogo3)" opacity="0.95"/>
+        <path d="M68 126c0-12 10-22 22-22 15 0 23 13 26 23 11-8 19-11 30-11 18 0 33 15 33 33 0 18-14 33-32 33H96c-17 0-28-12-28-28v-5Z" fill="#ffffff" opacity="0.9"/>
+        <path d="M79 95h20l25 47h-18l-7-14h-11l-9 14H58l21-47Zm18 20 5 10h-10l5-10Z" fill="#1a1f5c" opacity="0.9"/>
+      </svg>
+      <span>Ar Plus Soluções<br>em Ar Condicionado</span>
+    </a>
     <input type="checkbox" id="abre" aria-label="Abrir menu">
     <label class="burger" for="abre" aria-hidden="true">☰</label>
     <ul class="menu"><li><a href="index.html">Início</a></li><li><a href="trabalhos.html" aria-current="page">Trabalhos</a></li><li><a href="avaliacoes.html">Avaliações</a></li><li><a href="contato.html">Contato</a></li></ul>
@@ -39,11 +57,49 @@
 <section class="secao gelo">
   <div class="wrap">
     <h2>Galeria</h2>
-    <p class="intro">Substitua os espaços tracejados pelas fotos dos seus serviços (copie as imagens para a pasta <code>img</code>).</p>
+    <p class="intro">Substitua os espaços tracejados pelas fotos dos seus serviços e atualize a legenda conforme o projeto.</p>
     <div class="galeria">
-      <figure><img src="img/fachada.svg" alt="Fachada da loja" loading="lazy"><figcaption>Nossa loja em Cosmópolis</figcaption></figure>
-      <figure><img src="img/loja.svg" alt="Aparelhos em exposição" loading="lazy"><figcaption>Aparelhos em exposição</figcaption></figure>
-      <!-- Para adicionar uma foto: <figure><img src="img/NOME.jpg" alt="Descrição" loading="lazy"><figcaption>Legenda</figcaption></figure> -->
+      <figure>
+        <svg viewBox="0 0 900 640" role="img" aria-label="Fachada da loja" xmlns="http://www.w3.org/2000/svg" loading="lazy">
+          <defs>
+            <linearGradient id="sky2" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#edf8ff"/><stop offset="100%" stop-color="#d7edf8"/></linearGradient>
+            <linearGradient id="glass2" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#1a1f5c"/><stop offset="100%" stop-color="#2a3f7d"/></linearGradient>
+            <linearGradient id="accent2" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#27a7e2"/><stop offset="100%" stop-color="#1dbf74"/></linearGradient>
+          </defs>
+          <rect width="900" height="640" fill="url(#sky2)"/>
+          <rect x="70" y="110" width="760" height="420" rx="26" fill="url(#glass2)"/>
+          <rect x="120" y="165" width="660" height="270" rx="18" fill="#f4fbff" opacity="0.95"/>
+          <rect x="160" y="210" width="180" height="170" rx="14" fill="#e5f7ff"/>
+          <rect x="380" y="210" width="180" height="170" rx="14" fill="#e5f7ff"/>
+          <rect x="600" y="210" width="180" height="170" rx="14" fill="#e5f7ff"/>
+          <rect x="185" y="235" width="130" height="120" rx="12" fill="url(#accent2)" opacity="0.9"/>
+          <rect x="405" y="235" width="130" height="120" rx="12" fill="#1dbf74" opacity="0.9"/>
+          <rect x="625" y="235" width="130" height="120" rx="12" fill="#27a7e2" opacity="0.9"/>
+          <text x="450" y="490" text-anchor="middle" font-size="46" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">AR PLUS</text>
+          <text x="450" y="530" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" fill="#dff5ff">Soluções em Ar Condicionado</text>
+        </svg>
+        <figcaption>Nossa loja em Cosmópolis</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 900 640" role="img" aria-label="Aparelhos em exposição" xmlns="http://www.w3.org/2000/svg" loading="lazy">
+          <defs>
+            <linearGradient id="bgLoja2" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#edf8ff"/><stop offset="100%" stop-color="#dfeefc"/></linearGradient>
+            <linearGradient id="blueLoja2" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#1a1f5c"/><stop offset="100%" stop-color="#2a3f7d"/></linearGradient>
+          </defs>
+          <rect width="900" height="640" fill="url(#bgLoja2)"/>
+          <rect x="80" y="80" width="740" height="480" rx="28" fill="#ffffff" opacity="0.7"/>
+          <rect x="120" y="146" width="660" height="230" rx="18" fill="url(#blueLoja2)"/>
+          <rect x="170" y="205" width="150" height="120" rx="12" fill="#eaf8ff"/>
+          <rect x="375" y="205" width="150" height="120" rx="12" fill="#eaf8ff"/>
+          <rect x="580" y="205" width="150" height="120" rx="12" fill="#eaf8ff"/>
+          <rect x="210" y="260" width="70" height="55" rx="10" fill="#27a7e2"/>
+          <rect x="415" y="260" width="70" height="55" rx="10" fill="#1dbf74"/>
+          <rect x="620" y="260" width="70" height="55" rx="10" fill="#27a7e2"/>
+          <rect x="175" y="395" width="560" height="95" rx="16" fill="#dfeefc"/>
+          <text x="450" y="448" text-anchor="middle" font-size="38" font-family="Arial, sans-serif" font-weight="700" fill="#1a1f5c">Loja em exposição</text>
+        </svg>
+        <figcaption>Aparelhos em exposição</figcaption>
+      </figure>
       <div class="vazio">Foto de instalação (adicione aqui)</div>
       <div class="vazio">Foto de manutenção (adicione aqui)</div>
     </div>
