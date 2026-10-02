@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trabalhos | Ar Plus Soluções em Ar Condicionado</title>
-<meta name="description" content="Conheça os serviços e a loja da Ar Plus em Cosmópolis.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style/ar_plus.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trabalhos | Ar Plus Soluções em Ar Condicionado</title>
+    <meta name="description"content="Conheça os serviços e trabalhos realizados pela Ar Plus em Cosmópolis.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"href="https://fonts.gstatic.com"crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/ar_plus.css">
 </head>
 <body>
 <header class="topo">
@@ -20,46 +20,91 @@
     <input type="checkbox" id="abre" aria-label="Abrir menu">
     <label class="burger" for="abre" aria-hidden="true">☰</label>
     <ul class="menu">
-      <li><a href="index.html">Início</a></li>
-      <li><a href="trabalhos.html" aria-current="page">Trabalhos</a></li>
+      <li><a href="index.html" aria-current="page">Início</a></li>
+      <li><a href="trabalhos.html">Trabalhos</a></li>
       <li><a href="avaliacoes.html">Avaliações</a></li>
       <li><a href="contato.html">Contato</a></li>
     </ul>
   </div>
 </header>
 <main>
-
-<section class="titulo-pg"><div class="wrap"><h1>Trabalhos</h1><p>Serviços que realizamos e fotos da nossa loja.</p></div></section>
-
+<section class="titulo-pg">
+    <div class="wrap">
+        <h1>Trabalhos</h1>
+        <p> Conheça nossos serviços e veja alguns dos nossos trabalhos.</p>
+    </div>
+</section>
 <section class="secao">
-  <div class="wrap">
-    <h2>Serviços</h2>
-    <p class="intro">Do aparelho novo à manutenção do que você já tem.</p>
-    <div class="grade">
-      <article class="card"><h3>Instalação de split</h3><p>Residencial e comercial.</p></article>
-      <article class="card"><h3>Manutenção preventiva</h3><p>Revisão para evitar quebras no verão.</p></article>
-      <article class="card"><h3>Manutenção corretiva</h3><p>Conserto de falhas, vazamentos e ruídos.</p></article>
-      <article class="card"><h3>Limpeza e higienização</h3><p>Evaporadora e condensadora.</p></article>
+    <div class="wrap">
+        <h2>Serviços</h2>
+        <p class="intro">Do aparelho novo à manutenção do que você já tem.</p>
+        <div class="grade">
+            <article class="card">
+                <h3>Instalação de split</h3>
+                <p>Residencial e comercial.</p>
+            </article>
+            <article class="card">
+                <h3>Manutenção preventiva</h3>
+                <p> Revisão para evitar quebras no verão.</p>
+            </article>
+            <article class="card">
+                <h3>Manutenção corretiva</h3>
+                <p> Conserto de falhas, vazamentos e ruídos.</p>
+            </article>
+            <article class="card">
+                <h3> Limpeza e higienização</h3>
+                <p> Evaporadora e condensadora. </p>
+            </article>
+        </div>
     </div>
-  </div>
 </section>
-
 <section class="secao gelo">
-  <div class="wrap">
-    <h2>Galeria</h2>
-    <p class="intro">Substitua os espaços tracejados pelas fotos dos seus serviços e atualize a legenda conforme o projeto.</p>
-    <div class="galeria">
-      <figure>
-        <img src="img/fachada-loja.png" alt="Fachada da loja Ar Plus em Cosmópolis" loading="lazy">
-        <figcaption>Nossa loja em Cosmópolis</figcaption>
-      </figure>
-      <div class="vazio">Foto de aparelhos em exposição (adicione aqui)</div>
-      <div class="vazio">Foto de instalação (adicione aqui)</div>
-      <div class="vazio">Foto de manutenção (adicione aqui)</div>
+    <div class="wrap">
+        <h2>
+            Nossos trabalhos
+        </h2>
+        <p class="intro">Veja fotos e vídeos dos nossos serviços.</p>
+        <div class="galeria-instagram">
+            <div class="post"onclick="abrirModal('foto', 'img/fachada-loja.png')">
+                <img src="img/fachada-loja.png" alt="Fachada da loja Ar Plus">
+                <div class="legenda">Nossa loja em Cosmópolis</div>
+        </div>
+            <div class="post post-vazio">Foto da instalação</div>
+            <div class="post post-vazio">Foto da manutenção</div>
+            <div class="post" onclick="abrirModal('video', 'img/video-exemplo.mp4')">
+                <video src="img/video-exemplo.mp4" muted loop autoplay playsinline aria-label="Vídeo de exemplo">
+                </video>
+                <div class="icone-video">▶</div>
+                <div class="legenda">Vídeo de exemplo</div>
+            </div>
+            <div class="post post-vazio">Vídeo de serviço</div>
+            <div class="post post-vazio">Foto da instalação</div>
+            <div class="post post-vazio">Foto da manutenção</div>
+            <div class="post post-vazio">Vídeo da instalação</div>
+            <div class="post post-vazio">Vídeo de serviço</div>
+            <div class="post post-vazio">Foto da instalação</div>
+            <div class="post post-vazio">Foto da manutenção</div>
+            <div class="post post-vazio">Vídeo da instalação</div>
+            <div class="post post-vazio">Vídeo de serviço</div>
+            <div class="post post-vazio">Foto da instalação</div>
+            <div class="post post-vazio">Foto da manutenção</div>
+            <div class="post post-vazio">Vídeo da instalação</div>
+            <div class="post post-vazio">Vídeo de serviço</div>
+            <div class="post post-vazio">Vídeo da instalação</div>
+        </div>
     </div>
-  </div>
 </section>
-
+<div class="modal"id="modal"onclick="fecharModal()">
+    <span class="fechar">
+        ×
+    </span>
+    <div
+        class="modal-conteudo"
+        onclick="event.stopPropagation()"
+        id="conteudoModal"
+    >
+    </div>
+</div>
 </main>
 <footer class="rodape">
   <div class="rodape-conteudo">
@@ -89,6 +134,88 @@
     </div>
   </div>
 </footer>
-<a class="zap-fixo" href="https://wa.me/5519991874740?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">💬</a>
+<a
+    class="zap-fixo"
+    href="https://wa.me/5519991874740?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+    target="_blank"
+    rel="noopener"
+    aria-label="Falar no WhatsApp"
+>
+    💬
+</a>
+
+<script>
+
+function abrirModal(tipo, arquivo) {
+
+    const modal =
+        document.getElementById("modal");
+
+    const conteudo =
+        document.getElementById("conteudoModal");
+
+    if (tipo === "foto") {
+
+        conteudo.innerHTML = `
+
+            <img
+                src="${arquivo}"
+                alt="Imagem ampliada"
+            >
+
+        `;
+
+    }
+
+    if (tipo === "video") {
+
+        conteudo.innerHTML = `
+
+            <video
+                src="${arquivo}"
+                controls
+                autoplay
+                playsinline
+            >
+            </video>
+
+        `;
+
+    }
+
+    modal.classList.add("ativo");
+
+}
+
+function fecharModal() {
+
+    const modal =
+        document.getElementById("modal");
+
+    const conteudo =
+        document.getElementById("conteudoModal");
+
+    modal.classList.remove("ativo");
+
+    conteudo.innerHTML = "";
+
+}
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            fecharModal();
+
+        }
+
+    }
+);
+
+</script>
+
 </body>
+
 </html>

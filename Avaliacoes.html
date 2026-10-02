@@ -1,55 +1,136 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Avaliações | Ar Plus Soluções em Ar Condicionado</title>
-<meta name="description" content="O que os clientes dizem sobre a Ar Plus.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style/ar_plus.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Avaliações | Ar Plus Soluções em Ar Condicionado</title>
+    <meta name="description" content="O que os clientes dizem sobre a Ar Plus.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style/ar_plus.css">
 </head>
 <body>
 <header class="topo">
-  <div class="wrap">
-    <a class="marca" href="index.html" aria-label="Ar Plus Soluções em Ar Condicionado - início">
-      <img src="img/logo-simbolo.png" alt="Logo Ar Plus" width="56" height="52">
-      <span>Ar Plus Soluções<br>em Ar Condicionado</span>
-    </a>
-    <input type="checkbox" id="abre" aria-label="Abrir menu">
-    <label class="burger" for="abre" aria-hidden="true">☰</label>
-    <ul class="menu">
-      <li><a href="index.html">Início</a></li>
-      <li><a href="trabalhos.html">Trabalhos</a></li>
-      <li><a href="avaliacoes.html" aria-current="page">Avaliações</a></li>
-      <li><a href="contato.html">Contato</a></li>
-    </ul>
-  </div>
+    <div class="wrap">
+        <a class="marca" href="index.html"
+            aria-label="Ar Plus Soluções em Ar Condicionado - início">
+            <img src="img/logo-simbolo.png"
+                alt="Logo Ar Plus"
+                width="56"
+                height="52">
+            <span>
+                Ar Plus Soluções<br>
+                em Ar Condicionado
+            </span>
+        </a>
+        <input type="checkbox" id="abre" aria-label="Abrir menu">
+        <label class="burger" for="abre" aria-hidden="true">
+            ☰
+        </label>
+        <ul class="menu">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="trabalhos.html">Trabalhos</a></li>
+            <li><a href="avaliacoes.html" aria-current="page"> Avaliações</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </div>
 </header>
 <main>
+    <section class="titulo-pg">
+        <div class="wrap">
+            <h1>Avaliações</h1>
+            <p> A sua opinião é sempre bem vinda!</p>
+        </div>
+    </section>
+    <section class="secao">
+        <div class="wrap">
+            <p class="intro">
+                <strong>Avaliações dos clientes:</strong>
+                Veja o que nossos clientes têm a dizer.
+            </p>
+            <div class="grade" id="listaAvaliacoes">
+            </div>
+            <div class="form-avaliacao">
+                <h2>Deixe sua avaliação</h2>
+                <p>
+                    Já contratou a Ar Plus?
+                    Conte para outras pessoas como foi sua experiência.
+                </p>
+                <form id="formAvaliacao">
+                    <label for="nome">
+                        Seu nome:
+                    </label>
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Digite seu nome"
+                        required
+                    >
+                    <label for="nota">
+                        Sua nota:
+                    </label>
+                    <select id="nota" required>
+                        <option value="">
+                            Escolha uma nota
+                        </option>
+                        <option value="5">
+                            ★★★★★ - 5 estrelas
+                        </option>
+                        <option value="4">
+                            ★★★★☆ - 4 estrelas
+                        </option>
+                        <option value="3">
+                            ★★★☆☆ - 3 estrelas
+                        </option>
+                        <option value="2">
+                            ★★☆☆☆ - 2 estrelas
+                        </option>
+                        <option value="1">
+                            ★☆☆☆☆ - 1 estrela
+                        </option>
+                    </select>
+                    <label for="avaliacao">
+                        Sua avaliação:
+                    </label>
+                    <textarea
+                        id="avaliacao"
+                        rows="5"
+                        placeholder="Escreva como foi sua experiência com a Ar Plus..."
+                        required
+                    ></textarea>
+                    <button type="submit">
+                        Enviar avaliação
+                    </button>
+                    <div id="mensagem">
+                        Avaliação enviada com sucesso! ⭐
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="faixa">
+        <div class="wrap">
+            <h2>
+                Já foi atendido pela Ar Plus?
+            </h2>
+            <p>
+                Conte como foi. Sua opinião ajuda outros clientes.
+            </p>
+            <div class="acoes">
+                <a
+                    class="btn btn-zap"
+                    href="https://wa.me/5519991874740?text=Quero%20deixar%20minha%20avalia%C3%A7%C3%A3o"
+                    target="_blank"
+                    rel="noopener">
 
-<section class="titulo-pg"><div class="wrap"><h1>Avaliações</h1><p>A opinião de quem já contratou a Ar Plus.</p></div></section>
-
-<section class="secao">
-  <div class="wrap">
-    <p class="intro"><strong>Atenção:</strong> os textos abaixo são exemplos. Troque pelos depoimentos reais dos seus clientes antes de publicar.</p>
-    <div class="grade">
-      <article class="card aval"><div class="nota" aria-label="5 estrelas">★★★★★</div><p>“Texto da avaliação do cliente aqui.”</p><footer>Nome do cliente</footer></article>
-      <article class="card aval"><div class="nota" aria-label="5 estrelas">★★★★★</div><p>“Texto da avaliação do cliente aqui.”</p><footer>Nome do cliente</footer></article>
-      <article class="card aval"><div class="nota" aria-label="5 estrelas">★★★★★</div><p>“Texto da avaliação do cliente aqui.”</p><footer>Nome do cliente</footer></article>
-    </div>
-  </div>
-</section>
-
-<section class="faixa">
-  <div class="wrap">
-    <h2>Já foi atendido pela Ar Plus?</h2>
-    <p>Conte como foi. Sua opinião ajuda outros clientes.</p>
-    <div class="acoes"><a class="btn btn-zap" href="https://wa.me/5519991874740?text=Quero%20deixar%20minha%20avalia%C3%A7%C3%A3o" target="_blank" rel="noopener">Enviar minha avaliação</a></div>
-  </div>
-</section>
-
+                    Enviar minha avaliação
+                </a>
+            </div>
+        </div>
+    </section>
 </main>
 <footer class="rodape">
   <div class="rodape-conteudo">
@@ -79,6 +160,159 @@
     </div>
   </div>
 </footer>
-<a class="zap-fixo" href="https://wa.me/5519991874740?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">💬</a>
+<a
+    class="zap-fixo"
+    href="https://wa.me/5519991874740?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+    target="_blank"
+    rel="noopener"
+    aria-label="Falar no WhatsApp">
+
+    💬
+
+</a>
+
+<script>
+
+    // Pega o formulário
+    const formulario = document.getElementById("formAvaliacao");
+
+    // Área onde as avaliações aparecem
+    const lista = document.getElementById("listaAvaliacoes");
+
+    // Mensagem de sucesso
+    const mensagem = document.getElementById("mensagem");
+
+
+    // Carrega as avaliações salvas
+    let avaliacoes =
+        JSON.parse(localStorage.getItem("avaliacoesArPlus")) || [];
+
+
+    // Função para mostrar as avaliações
+    function mostrarAvaliacoes() {
+
+        lista.innerHTML = "";
+
+
+        // Se não tiver nenhuma avaliação
+        if (avaliacoes.length === 0) {
+
+            lista.innerHTML = `
+                <p>
+                    Ainda não existem avaliações.
+                    Seja o primeiro a avaliar!
+                </p>
+            `;
+
+            return;
+        }
+
+
+        // Mostra cada avaliação
+        avaliacoes.forEach(function(avaliacao, index) {
+
+            const estrelas =
+                "★".repeat(avaliacao.nota) +
+                "☆".repeat(5 - avaliacao.nota);
+
+
+            const artigo =
+                document.createElement("article");
+
+            artigo.className = "card aval";
+
+
+            artigo.innerHTML = `
+
+                <div
+                    class="nota"
+                    aria-label="${avaliacao.nota} estrelas">
+
+                    ${estrelas}
+
+                </div>
+
+                <p>
+                    “${avaliacao.texto}”
+                </p>
+
+                <footer>
+                    ${avaliacao.nome}
+                </footer>
+
+            `;
+
+
+            lista.appendChild(artigo);
+
+        });
+
+    }
+
+
+    // Quando a pessoa enviar a avaliação
+    formulario.addEventListener("submit", function(event) {
+
+        // Impede a página de recarregar
+        event.preventDefault();
+
+
+        // Pega os dados
+        const nome =
+            document.getElementById("nome").value.trim();
+
+        const nota =
+            Number(document.getElementById("nota").value);
+
+        const texto =
+            document.getElementById("avaliacao").value.trim();
+
+
+        // Cria a nova avaliação
+        const novaAvaliacao = {
+
+            nome: nome,
+
+            nota: nota,
+
+            texto: texto
+
+        };
+
+
+        // Adiciona à lista
+        avaliacoes.push(novaAvaliacao);
+
+
+        // Salva no navegador
+        localStorage.setItem(
+            "avaliacoesArPlus",
+            JSON.stringify(avaliacoes)
+        );
+
+
+        // Atualiza as avaliações
+        mostrarAvaliacoes();
+
+
+        // Limpa o formulário
+        formulario.reset();
+
+
+        // Mostra mensagem
+        mensagem.style.display = "block";
+
+
+        // Esconde depois de 3 segundos
+        setTimeout(function() {
+
+            mensagem.style.display = "none";
+
+        }, 3000);
+
+    });
+    // Mostra as avaliações quando abre a página
+    mostrarAvaliacoes();
+</script>
 </body>
 </html>

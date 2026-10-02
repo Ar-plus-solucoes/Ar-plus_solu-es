@@ -1,4 +1,3 @@
-/* Ar Plus Soluções em Ar Condicionado */
 :root {
   --navy: #1a1f5c;
   --navy-strong: #111746;
@@ -439,14 +438,218 @@ main {
   background: rgba(39, 167, 226, 0.04);
 }
 
+.galeria-instagram {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.post {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #ddd;
+  cursor: pointer;
+}
+
+.post-vazio {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  border: 1px dashed rgba(39, 167, 226, 0.65);
+  background: linear-gradient(145deg, #f7fcff, #e8f4ff);
+  color: var(--cinza);
+  text-align: center;
+  cursor: default;
+}
+
+.post img,
+.post video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.post:hover img,
+.post:hover video {
+  transform: scale(1.05);
+}
+
+.icone-video {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.legenda {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 30px 15px 15px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post:hover .legenda {
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.modal.ativo {
+  display: flex;
+}
+
+.modal-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+}
+
+.modal-conteudo img,
+.modal-conteudo video {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.fechar {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .galeria-instagram {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+}
+
 .nota {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  color: #f7b500;
-  font-size: 1.2rem;
+  color: #f5b400;
+  font-size: 22px;
   letter-spacing: 2px;
   margin-bottom: 0.7rem;
+}
+
+.form-avaliacao {
+  max-width: 700px;
+  margin: 50px auto 20px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-avaliacao h2 {
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.form-avaliacao p {
+  margin-bottom: 25px;
+  color: #666;
+}
+
+.form-avaliacao label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 7px;
+  font-weight: 700;
+}
+
+.form-avaliacao input,
+.form-avaliacao select,
+.form-avaliacao textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.form-avaliacao textarea {
+  resize: vertical;
+}
+
+.form-avaliacao button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #0b74de;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.form-avaliacao button:hover {
+  background: #095db2;
+}
+
+#mensagem {
+  display: none;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #dff6e5;
+  color: #176b2c;
+  text-align: center;
+  font-weight: 600;
+}
+
+.excluir {
+  margin-top: 10px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  background: #e53935;
+  color: #fff;
+  cursor: pointer;
+}
+
+.endereco-loja {
+  margin-top: 1rem;
 }
 
 .aval p {
