@@ -105,9 +105,7 @@
                     <button type="submit">
                         Enviar avaliação
                     </button>
-                    <div id="mensagem">
-                        Avaliação enviada com sucesso! ⭐
-                    </div>
+                    <div id="mensagem" role="status" aria-live="polite"></div>
                 </form>
             </div>
         </div>
@@ -171,148 +169,129 @@
 
 </a>
 
-<script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    query,
+    where,
+    onSnapshot,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    // Pega o formulário
-    const formulario = document.getElementById("formAvaliacao");
+const firebaseConfig = {
+    apiKey: "COLE_AQUI",
+    authDomain: "COLE_AQUI",
+    projectId: "COLE_AQUI",
+    storageBucket: "COLE_AQUI",
+    messagingSenderId: "COLE_AQUI",
+    appId: "COLE_AQUI"
+};
 
-    // Área onde as avaliações aparecem
-    const lista = document.getElementById("listaAvaliacoes");
+const formulario = document.getElementById("formAvaliacao");
+const lista = document.getElementById("listaAvaliacoes");
+const mensagem = document.getElementById("mensagem");
+const botao = formulario.querySelector('button[type="submit"]');
+const firebaseConfigurado = Object.values(firebaseConfig).every(
+    (valor) => valor.trim() && !valor.includes("COLE_AQUI")
+);
+let temporizadorMensagem;
 
-    // Mensagem de sucesso
-    const mensagem = document.getElementById("mensagem");
+function mostrarMensagem(texto, erro = false) {
+    mensagem.textContent = texto;
+    mensagem.style.display = "block";
+    mensagem.style.color = erro ? "#c0392b" : "";
+    clearTimeout(temporizadorMensagem);
+    temporizadorMensagem = setTimeout(() => {
+        mensagem.style.display = "none";
+    }, 5000);
+}
 
+function mostrarAvisoLista(texto) {
+    const aviso = document.createElement("p");
+    aviso.textContent = texto;
+    lista.replaceChildren(aviso);
+}
 
-    // Carrega as avaliações salvas
-    let avaliacoes =
-        JSON.parse(localStorage.getItem("avaliacoesArPlus")) || [];
+if (!firebaseConfigurado) {
+    mostrarAvisoLista("As avaliações compartilhadas serão ativadas após configurar o Firebase.");
+    formulario.addEventListener("submit", (evento) => {
+        evento.preventDefault();
+        mostrarMensagem("O Firebase ainda precisa ser configurado para enviar avaliações.", true);
+    });
+} else {
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const colecao = collection(db, "avaliacoes");
+    const consulta = query(colecao, where("aprovada", "==", true));
 
+    onSnapshot(consulta, (snapshot) => {
+        const itens = snapshot.docs
+            .map((documento) => documento.data())
+            .sort((a, b) => (b.criadoEm?.seconds || 0) - (a.criadoEm?.seconds || 0));
 
-    // Função para mostrar as avaliações
-    function mostrarAvaliacoes() {
+        lista.replaceChildren();
 
-        lista.innerHTML = "";
-
-
-        // Se não tiver nenhuma avaliação
-        if (avaliacoes.length === 0) {
-
-            lista.innerHTML = `
-                <p>
-                    Ainda não existem avaliações.
-                    Seja o primeiro a avaliar!
-                </p>
-            `;
-
+        if (itens.length === 0) {
+            mostrarAvisoLista("Ainda não existem avaliações. Seja o primeiro a avaliar!");
             return;
         }
 
-
-        // Mostra cada avaliação
-        avaliacoes.forEach(function(avaliacao, index) {
-
-            const estrelas =
-                "★".repeat(avaliacao.nota) +
-                "☆".repeat(5 - avaliacao.nota);
-
-
-            const artigo =
-                document.createElement("article");
-
+        itens.forEach((avaliacao) => {
+            const nota = Math.min(5, Math.max(1, Number(avaliacao.nota) || 5));
+            const artigo = document.createElement("article");
             artigo.className = "card aval";
 
+            const estrelas = document.createElement("div");
+            estrelas.className = "nota";
+            estrelas.setAttribute("aria-label", `${nota} estrelas`);
+            estrelas.textContent = "★".repeat(nota) + "☆".repeat(5 - nota);
 
-            artigo.innerHTML = `
+            const texto = document.createElement("p");
+            texto.textContent = `“${avaliacao.texto || ""}”`;
 
-                <div
-                    class="nota"
-                    aria-label="${avaliacao.nota} estrelas">
+            const rodape = document.createElement("footer");
+            rodape.textContent = avaliacao.nome || "Cliente";
 
-                    ${estrelas}
-
-                </div>
-
-                <p>
-                    “${avaliacao.texto}”
-                </p>
-
-                <footer>
-                    ${avaliacao.nome}
-                </footer>
-
-            `;
-
-
+            artigo.append(estrelas, texto, rodape);
             lista.appendChild(artigo);
-
         });
-
-    }
-
-
-    // Quando a pessoa enviar a avaliação
-    formulario.addEventListener("submit", function(event) {
-
-        // Impede a página de recarregar
-        event.preventDefault();
-
-
-        // Pega os dados
-        const nome =
-            document.getElementById("nome").value.trim();
-
-        const nota =
-            Number(document.getElementById("nota").value);
-
-        const texto =
-            document.getElementById("avaliacao").value.trim();
-
-
-        // Cria a nova avaliação
-        const novaAvaliacao = {
-
-            nome: nome,
-
-            nota: nota,
-
-            texto: texto
-
-        };
-
-
-        // Adiciona à lista
-        avaliacoes.push(novaAvaliacao);
-
-
-        // Salva no navegador
-        localStorage.setItem(
-            "avaliacoesArPlus",
-            JSON.stringify(avaliacoes)
-        );
-
-
-        // Atualiza as avaliações
-        mostrarAvaliacoes();
-
-
-        // Limpa o formulário
-        formulario.reset();
-
-
-        // Mostra mensagem
-        mensagem.style.display = "block";
-
-
-        // Esconde depois de 3 segundos
-        setTimeout(function() {
-
-            mensagem.style.display = "none";
-
-        }, 3000);
-
+    }, () => {
+        mostrarAvisoLista("Não foi possível carregar as avaliações agora.");
     });
-    // Mostra as avaliações quando abre a página
-    mostrarAvaliacoes();
+
+    formulario.addEventListener("submit", async (evento) => {
+        evento.preventDefault();
+
+        const nome = document.getElementById("nome").value.trim().slice(0, 60);
+        const nota = Number(document.getElementById("nota").value);
+        const texto = document.getElementById("avaliacao").value.trim().slice(0, 600);
+
+        if (!nome || !Number.isInteger(nota) || nota < 1 || nota > 5 || !texto) {
+            mostrarMensagem("Preencha o nome, a nota e a avaliação corretamente.", true);
+            return;
+        }
+
+        botao.disabled = true;
+        try {
+            await addDoc(colecao, {
+                nome,
+                nota,
+                texto,
+                aprovada: false,
+                criadoEm: serverTimestamp()
+            });
+            formulario.reset();
+            mostrarMensagem("Avaliação enviada! Ela aparece no site assim que for aprovada. ⭐");
+        } catch {
+            mostrarMensagem("Não foi possível enviar. Tente novamente.", true);
+        } finally {
+            botao.disabled = false;
+        }
+    });
+}
 </script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /avaliacoes/{avaliacaoId} {
+      allow read: if resource.data.aprovada == true;
+
+      allow create: if request.resource.data.keys().hasAll([
+          'nome', 'nota', 'texto', 'aprovada', 'criadoEm'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'nome', 'nota', 'texto', 'aprovada', 'criadoEm'
+        ])
+        && request.resource.data.nome is string
+        && request.resource.data.nome.size() > 0
+        && request.resource.data.nome.size() <= 60
+        && request.resource.data.nota is int
+        && request.resource.data.nota >= 1
+        && request.resource.data.nota <= 5
+        && request.resource.data.texto is string
+        && request.resource.data.texto.size() > 0
+        && request.resource.data.texto.size() <= 600
+        && request.resource.data.aprovada == false
+        && request.resource.data.criadoEm == request.time;
+
+      allow update, delete: if false;
+    }
+  }
+}
