@@ -331,6 +331,30 @@ main {
   font-size: 0.98rem;
 }
 
+.clientes-lista {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+}
+
+.clientes-lista li {
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) 1fr;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.cliente-foto {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
 .marcas {
   display: flex;
   flex-wrap: wrap;
@@ -871,6 +895,10 @@ textarea {
   .hero .wrap,
   .dois,
   .contato {
+    grid-template-columns: 1fr;
+  }
+
+  .clientes-lista li {
     grid-template-columns: 1fr;
   }
 
